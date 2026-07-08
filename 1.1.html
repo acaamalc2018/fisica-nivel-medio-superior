@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 ¿Qué es la Física? - Física nivel medio superior</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.7;
+            color: #1e2b3c;
+            background: #f5f3f0;
+            padding: 1rem;
+        }
+        .book-container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 2rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ===== JUSTIFICADO PARA TODOS LOS PÁRRAFOS ===== */
+        p {
+            text-align: justify;
+        }
+
+        /* ===== ENCABEZADO FIJO ===== */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #ffffff;
+            padding: 0.7rem 0 0.5rem 0;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #dce3ec;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem 1rem;
+        }
+        .header-left {
+            font-size: 0.75rem;
+            color: #2c4a62;
+            text-align: left;
+        }
+        .header-left strong {
+            font-weight: 600;
+            color: #0b2a3f;
+        }
+        .header-left .sep {
+            color: #a0b8cc;
+            margin: 0 0.2rem;
+        }
+
+        /* ===== TÍTULO PRINCIPAL ===== */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            color: #172b3b;
+            border-bottom: 3px solid #d4e0eb;
+            padding-bottom: 0.4rem;
+            margin-bottom: 1.8rem;
+        }
+
+        /* ===== TEMA ===== */
+        .tema-badge {
+            background: #eaf3fa;
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1f4b6e;
+            margin-bottom: 0.2rem;
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #0a2a3f;
+            margin-bottom: 1.2rem;
+        }
+
+        /* ===== DEFINICIONES ===== */
+        .def-box {
+            padding: 1.2rem 1.8rem;
+            margin: 0.8rem 0 1.5rem 0;
+            border-radius: 8px;
+            border-left: 6px solid #4a7b9c;
+            background: #f8fbff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        }
+        .def-box.popular {
+            border-left-color: #c4883a;
+            background: #fefcf7;
+        }
+        .def-box .label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #4a7b9c;
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+        .def-box.popular .label {
+            color: #c4883a;
+        }
+        .def-box p {
+            font-size: 1.05rem;
+            color: #1e2b3c;
+            margin: 0;
+            text-align: justify;
+        }
+
+        /* ===== DESTACADO ===== */
+        .highlight-box {
+            background: #f2f6fa;
+            border: 1px solid #dce5ed;
+            border-radius: 8px;
+            padding: 0.8rem 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-size: 1.05rem;
+            color: #1e2b3c;
+        }
+
+        /* ===== SECCIONES ===== */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0a2a3f;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #d1e7f3;
+        }
+        .subsection-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1f4b6e;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+        ul, ol {
+            padding-left: 2rem;
+            margin: 0.6rem 0 1rem 0;
+        }
+        li {
+            margin-bottom: 0.3rem;
+            font-size: 0.98rem;
+            text-align: justify;
+        }
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.6rem 1.5rem;
+            background: #f2f6fa;
+            padding: 1.2rem 1.8rem;
+            border-radius: 12px;
+            margin: 0.8rem 0 1.5rem 0;
+        }
+        .branches-grid span {
+            font-size: 0.95rem;
+            color: #0a2a3f;
+            text-align: justify;
+        }
+        .branches-grid span::before {
+            content: "▸ ";
+            color: #4a7b9c;
+            font-weight: bold;
+        }
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin: 1rem 0 1.5rem 0;
+        }
+        .example-card {
+            background: #f8fbff;
+            border: 1px solid #e0eaf2;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            transition: box-shadow 0.2s;
+        }
+        .example-card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        .example-card h4 {
+            color: #1f4b6e;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+        .example-card p {
+            font-size: 0.92rem;
+            color: #2c4a62;
+            text-align: justify;
+        }
+        .example-card .sin {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.1rem 0.6rem;
+            border-radius: 20px;
+            margin-top: 0.4rem;
+        }
+
+        .footer {
+            margin-top: 2.5rem;
+            font-size: 0.75rem;
+            color: #6f8aa0;
+            text-align: right;
+            border-top: 1px solid #dce5ed;
+            padding-top: 1rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.4rem 1.5rem;
+            background: #d1e7f3;
+            color: #0a2a3f;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: background 0.2s;
+        }
+        .back-link:hover {
+            background: #b3d7ef;
+        }
+
+        @media (max-width: 600px) {
+            .book-container { padding: 1.2rem; }
+            .sticky-header { flex-direction: column; align-items: stretch; gap: 0.3rem; }
+            .header-left { font-size: 0.65rem; }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.4rem; }
+            .section-title { font-size: 1.3rem; }
+            .def-box p { font-size: 0.95rem; }
+            .example-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="book-container">
+
+    <!-- ===== ENCABEZADO FIJO ===== -->
+    <div class="sticky-header">
+        <div class="header-left">
+            <strong>Elaboró:</strong> Ing. Angel Enrique Caamal Caamal
+            <span class="sep">|</span>
+            📅 20 de junio 2026
+            <span class="sep">|</span>
+            📍 San Francisco de Campeche, México
+            <span class="sep">|</span>
+            📞 913 112 22 55
+            <span class="sep">|</span>
+            ✉️ acaamalc2018@outlook.com
+        </div>
+    </div>
+
+    <!-- ===== TÍTULO ===== -->
+    <h1>📘 Física nivel medio superior</h1>
+
+    <!-- ===== TEMA 1.1 ===== -->
+    <div class="tema-badge">Capítulo 1 · Tema 1.1</div>
+    <h2>¿Qué es la Física?</h2>
+
+    <!-- ===== DEFINICIÓN FORMAL ===== -->
+    <div class="def-box">
+        <span class="label">📐 Definición formal (científica)</span>
+        <p>La Física es la ciencia natural que estudia los componentes fundamentales del universo, las interacciones entre ellos y las leyes que rigen los fenómenos observables. Se basa en el método científico, la experimentación y la matematización de las relaciones entre materia, energía, espacio y tiempo. Su objetivo es describir y predecir el comportamiento de sistemas físicos, desde las partículas subatómicas hasta las estructuras cósmicas más grandes.</p>
+    </div>
+
+    <!-- ===== DEFINICIÓN POPULAR ===== -->
+    <div class="def-box popular">
+        <span class="label">🗣️ Definición con palabras simples (para jóvenes)</span>
+        <p>La Física es la ciencia que explica cómo funciona el mundo que nos rodea. Estudia por qué las cosas se mueven, cómo se transforma la energía, qué es la luz, cómo funciona la gravedad y por qué los planetas giran alrededor del Sol.</p>
+    </div>
+
+    <!-- ===== MANUAL DE INSTRUCCIONES DEL UNIVERSO ===== -->
+    <div class="highlight-box">
+        Es como un «manual de instrucciones del universo» que nos ayuda a entender desde por qué flota un barco hasta cómo funciona un celular o por qué el cielo es azul.
+    </div>
+
+    <!-- ===== QUÉ ES CIENCIA Y TIPOS ===== -->
+    <div class="section-title">🔬 ¿Qué es la ciencia y cómo se clasifica?</div>
+
+    <p style="margin-bottom: 0.8rem;">La ciencia es el conjunto de conocimientos obtenidos mediante la observación, el razonamiento y la experimentación, organizados sistemáticamente para comprender y explicar los fenómenos naturales y sociales. Se divide en dos grandes ramas:</p>
+
+    <ul>
+        <li><strong>Ciencias formales:</strong> Estudian sistemas abstractos mediante la lógica y las matemáticas. Ejemplo: Matemáticas, Lógica.</li>
+        <li><strong>Ciencias fácticas (o empíricas):</strong> Estudian hechos y fenómenos de la realidad, basándose en la observación y experimentación. Se dividen en:
+            <ul>
+                <li><strong>Ciencias naturales:</strong> Estudian la naturaleza y sus fenómenos. Ejemplo: Física, Química, Biología, Geología, Astronomía.</li>
+                <li><strong>Ciencias sociales:</strong> Estudian el comportamiento humano y la sociedad. Ejemplo: Sociología, Psicología, Economía, Historia.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="subsection-title">🧪 Las ciencias físicas y su relación con otras disciplinas</div>
+    <p>Las ciencias físicas son aquellas que estudian la materia inorgánica y la energía, y su interacción. La Física es la ciencia física fundamental, pero se conecta con otras áreas creando campos interdisciplinarios:</p>
+
+    <div class="branches-grid">
+        <span><strong>Biofísica</strong> – Física aplicada a la biología (ej. cómo funciona el ojo humano).</span>
+        <span><strong>Fisicoquímica</strong> – Física aplicada a la química (ej. cinética de reacciones).</span>
+        <span><strong>Astrofísica</strong> – Física aplicada al estudio del universo (ej. estrellas, galaxias).</span>
+        <span><strong>Geofísica</strong> – Física aplicada al estudio de la Tierra (ej. terremotos, campos magnéticos).</span>
+        <span><strong>Electroquímica</strong> – Estudio de reacciones químicas con corriente eléctrica.</span>
+        <span><strong>Física médica</strong> – Aplicación de la física en la medicina (ej. rayos X, resonancias).</span>
+        <span><strong>Mecánica cuántica</strong> – Estudio de partículas subatómicas y sus interacciones.</span>
+        <span><strong>Termodinámica</strong> – Estudio del calor y su transformación en trabajo.</span>
+    </div>
+
+    <!-- ===== RAMAS DE LA FÍSICA ===== -->
+    <div class="section-title">📂 Ramas principales de la Física</div>
+
+    <ul>
+        <li><strong>Mecánica:</strong> Estudia el movimiento y el equilibrio de los cuerpos bajo la acción de fuerzas. Se divide en:
+            <ul>
+                <li><strong>Estática:</strong> Estudia los cuerpos en equilibrio (sin movimiento).</li>
+                <li><strong>Cinemática:</strong> Estudia el movimiento sin considerar las causas que lo producen.</li>
+                <li><strong>Dinámica:</strong> Estudia el movimiento y las fuerzas que lo provocan.</li>
+            </ul>
+        </li>
+        <li><strong>Termodinámica:</strong> Estudia el calor, la temperatura y sus transformaciones en trabajo.</li>
+        <li><strong>Óptica:</strong> Estudia la luz y los fenómenos relacionados con ella (reflexión, refracción, etc.).</li>
+        <li><strong>Acústica:</strong> Estudia el sonido y sus propiedades.</li>
+        <li><strong>Electromagnetismo:</strong> Estudia las interacciones entre cargas eléctricas y campos magnéticos.</li>
+        <li><strong>Mecánica cuántica:</strong> Estudia el comportamiento de las partículas subatómicas.</li>
+        <li><strong>Relatividad:</strong> Estudia el espacio-tiempo y la gravedad a gran escala.</li>
+        <li><strong>Física de fluidos:</strong> Estudia el comportamiento de líquidos y gases.</li>
+    </ul>
+
+    <!-- ===== APLICACIONES EN INGENIERÍA ===== -->
+    <div class="section-title">🏗️ ¿Cómo usan la Física los ingenieros, arquitectos y diseñadores?</div>
+
+    <p>La Física es la base de toda la ingeniería y de muchas profesiones creativas. Sin ella, no existirían los puentes, los rascacielos, los aviones, los automóviles, los teléfonos móviles ni los sistemas de energía que usamos a diario.</p>
+
+    <ul>
+        <li><strong>Ingeniería civil y arquitectura:</strong> Usan la estática y la mecánica de materiales para calcular la resistencia de puentes, edificios y estructuras. La dinámica ayuda a diseñar edificios que resistan terremotos.</li>
+        <li><strong>Ingeniería mecánica:</strong> Aplica la mecánica y la termodinámica para diseñar motores, turbinas, sistemas de refrigeración y maquinaria industrial.</li>
+        <li><strong>Ingeniería eléctrica y electrónica:</strong> Usa el electromagnetismo para diseñar circuitos, generadores, motores eléctricos, sistemas de comunicación y dispositivos como celulares y computadoras.</li>
+        <li><strong>Diseño industrial y de productos:</strong> Aplica principios de mecánica, óptica y materiales para crear objetos ergonómicos, funcionales y estéticamente atractivos.</li>
+        <li><strong>Ingeniería aeronáutica y espacial:</strong> Usa la mecánica de fluidos, la termodinámica y la mecánica orbital para diseñar aviones, cohetes y satélites.</li>
+    </ul>
+
+    <!-- ===== EJEMPLOS DE APLICACIONES ===== -->
+    <div class="section-title">💡 Ejemplos de aplicaciones de la Física en la vida cotidiana</div>
+
+    <p style="margin-bottom: 0.8rem;">Estos son solo algunos ejemplos de cómo la Física ha transformado la sociedad. Sin el conocimiento físico detrás de cada uno, no existirían como los conocemos:</p>
+
+    <div class="example-grid">
+        <div class="example-card">
+            <h4>📱 Teléfonos móviles</h4>
+            <p>Usan ondas electromagnéticas (microondas) para transmitir voz y datos. Sin el electromagnetismo, no habría comunicaciones inalámbricas.</p>
+            <span class="sin">Sin Física → no existiría</span>
+        </div>
+        <div class="example-card">
+            <h4>🛩️ Aviones</h4>
+            <p>La aerodinámica (mecánica de fluidos) permite que las alas generen sustentación. Sin la Física, volar sería imposible.</p>
+            <span class="sin">Sin Física → no existiría</span>
+        </div>
+        <div class="example-card">
+            <h4>🏥 Rayos X y resonancias</h4>
+            <p>La Física médica permite ver el interior del cuerpo sin cirugía, salvando millones de vidas.</p>
+            <span class="sin">Sin Física → no existiría</span>
+        </div>
+        <div class="example-card">
+            <h4>🌞 Paneles solares</h4>
+            <p>Convierten la luz solar en electricidad mediante el efecto fotoeléctrico (Física cuántica).</p>
+            <span class="sin">Sin Física → no existiría</span>
+        </div>
+        <div class="example-card">
+            <h4>🚗 Automóviles</h4>
+            <p>Usan termodinámica (motores de combustión), mecánica (transmisión, suspensión) y electromagnetismo (sistemas eléctricos).</p>
+            <span class="sin">Sin Física → no existiría</span>
+        </div>
+        <div class="example-card">
+            <h4>🌐 Internet</h4>
+            <p>Funciona gracias a la óptica (fibra óptica) y el electromagnetismo (señales de radio, microondas).</p>
+            <span class="sin">Sin Física → no existiría</span>
+        </div>
+    </div>
+
+    <!-- ===== CONCLUSIÓN ===== -->
+    <div style="background: #eaf3fa; border-radius: 12px; padding: 1.2rem 1.8rem; margin: 1.5rem 0;">
+        <p style="font-size: 1.05rem; font-weight: 500; color: #0a2a3f; text-align: justify;">
+            ✨ Conclusión: La Física no es solo una materia escolar. Es la herramienta que ha permitido a la humanidad construir la civilización moderna. Desde la rueda hasta los viajes espaciales, todo lo que nos rodea tiene Física. Entenderla nos da el poder de transformar el mundo y mejorar la vida de las personas.
+        </p>
+    </div>
+
+    <!-- ===== VOLVER ===== -->
+    <a href="#" class="back-link">← Volver al índice general</a>
+
+    <div class="footer">
+        Tema 1.1 · Física nivel medio superior
+    </div>
+
+</div>
+
+</body>
+</html>
